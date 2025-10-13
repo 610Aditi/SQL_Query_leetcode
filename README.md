@@ -1,1 +1,1 @@
-sql Queries leetcode problem statement
+SQL Queries leetcode problem statement
