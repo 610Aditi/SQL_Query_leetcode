@@ -65,10 +65,8 @@ SOLUTION :
 
 SELECT
     transaction_date,
-    -- Sum amounts where transaction_id is odd, else 0
-    COALESCE(SUM(CASE WHEN MOD(transaction_id, 2) = 1 THEN amount ELSE 0 END), 0) AS odd_sum,
-    -- Sum amounts where transaction_id is even, else 0
-    COALESCE(SUM(CASE WHEN MOD(transaction_id, 2) = 0 THEN amount ELSE 0 END), 0) AS even_sum
+    SUM(CASE WHEN MOD(amount, 2) = 1 THEN amount ELSE 0 END) AS odd_sum,
+    SUM(CASE WHEN MOD(amount, 2) = 0 THEN amount ELSE 0 END) AS even_sum
 FROM
     transactions
 GROUP BY
